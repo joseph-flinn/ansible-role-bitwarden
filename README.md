@@ -184,7 +184,7 @@ bitwarden_nginx_key_path:
 
 ### bitwarden_lets_encrypt_email
 
-Email for Let's Encrypt account. Used by Let's Encrypt to communicate cert expiration notifications
+Email for Let's Encrypt account (required if `bitwarden_ssl_mode == "lets_encrypt"`). Used by Let's Encrypt to communicate cert expiration notifications
 
 #### Default value
 
