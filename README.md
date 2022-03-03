@@ -26,7 +26,7 @@ Use the official docs as reference: https://bitwarden.com/help/article/install-o
   * [bitwarden_nginx_key_path](#bitwarden_nginx_key_path)
   * [bitwarden_lets_encrypt_email](#bitwarden_lets_encrypt_email)
   * [bitwarden_setup_config](#bitwarden_setup_config)
-  * [bitwarden_version](#bitwarden_version)
+  * [bitwarden_selfhost_version](#bitwarden_selfhost_version)
   * [bitwarden_test_install_script](#bitwarden_test_install_script)
 * [Dependencies](#dependencies)
 * [Known Issues](#known-issues)
@@ -209,12 +209,15 @@ bitwarden_setup_config:
   database_docker_volume: true
 ```
 
-### bitwarden_version
+### bitwarden_selfhost_version
+
+Version of the selfhost bitwarden.sh script. The script itself has a different version of the bitwarden server and web
+projects. 
 
 #### Default value
 
 ```YAML
-bitwarden_version: v1.43.0
+bitwarden_selfhost_version: v1.0.0
 ```
 
 ### bitwarden_test_install_script
