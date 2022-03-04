@@ -26,6 +26,16 @@
     group: "{{ bitwarden_group }}"
     mode: "0600"
 
+- name: Copy Bitwarden nginx CA in place
+  when: bitwarden_ssl_mode == "provided"
+  copy:
+    src: "{{ bitwarden_nginx_ca_path }}"
+    dest: "{{ bitwarden_install_dir }}/ssl/{{ bitwarden_domain_name }}/ca.crt"
+    remote_src: true
+    owner: "{{ bitwarden_user }}"
+    group: "{{ bitwarden_group }}"
+    mode: "0600"
+
 - name: Ensure custom values in Bitwarden configuration
   ansible.builtin.lineinfile:
     path: "{{ bitwarden_install_dir }}/config.yml"
