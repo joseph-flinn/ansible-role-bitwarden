@@ -22,6 +22,8 @@ bitwarden_nginx_cert_path:
 # File is copied from the provided location to Bitwardens user home in order to garantue the correct mapping inside the container.
 bitwarden_nginx_key_path:
 
+bitwarden_nginx_ca_path:
+
 # @var bitwarden_lets_encrpyt_email:description: Lets Encrypt email account if bitwarden_ssl_mode set to "lets_encrypt"
 bitwarden_lets_encrypt_email:
 

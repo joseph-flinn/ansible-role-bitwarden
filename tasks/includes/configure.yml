@@ -1,3 +1,11 @@
+- name: Create SSL cert directory if is doesn't exist
+  ansible.builtin.file:
+    dest: "{{ bitwarden_install_dir }}/ssl/{{ bitwarden_domain_name }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ bitwarden_user }}"
+    group: "{{ bitwarden_group }}"
+
 - name: Copy Bitwarden nginx certificate in place
   when: bitwarden_ssl_mode == "provided"
   copy:
@@ -13,6 +21,16 @@
   copy:
     src: "{{ bitwarden_nginx_key_path }}"
     dest: "{{ bitwarden_install_dir }}/ssl/{{ bitwarden_domain_name }}/private.key"
+    remote_src: true
+    owner: "{{ bitwarden_user }}"
+    group: "{{ bitwarden_group }}"
+    mode: "0600"
+
+- name: Copy Bitwarden nginx CA in place
+  when: bitwarden_ssl_mode == "provided"
+  copy:
+    src: "{{ bitwarden_nginx_ca_path }}"
+    dest: "{{ bitwarden_install_dir }}/ssl/{{ bitwarden_domain_name }}/ca.crt"
     remote_src: true
     owner: "{{ bitwarden_user }}"
     group: "{{ bitwarden_group }}"
